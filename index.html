@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -30,10 +31,14 @@
                     <li class="nav-item"><a class="nav-link" href="#"><span class="fa fa-list fa-lg"></span> Menu</a></li>
                     <li class="nav-item"><a class="nav-link" href="./contactus.html"><span class="fa fa-address-card fa-lg"></span> Contect</a></li>
                 </ul>
-                <span class="navbar-text">
+                <!-- <span class="navbar-text">
                     <a data-toggle="modal" data-target="#loginModal">
                         <span class="fa fa-sign-in"></span> Login
                     </a>
+                </span> -->
+                <span class="navbar-text">
+                    <a id="login">
+                    <span class="fa fa-sign-in"></span> Login</a>
                 </span>
             </div>
         </div>
@@ -91,11 +96,18 @@
                     <!-- <a role="button" class="btn btn-block nav-link btn-warning" data-toggle="tooltip" data-html="true" 
                     title="Or Call us at <br><strong>+7016849762</strong>"
                     data-placement="bottom" href="#Here">Reserve Table</a> -->
-                        <a role="button" class="btn btn-block nav-link btn-warning" data-toggle="modal" data-target="#formModal">Reserve Table</a>
+
+                   
+                    <!-- <a role="button" class="btn btn-block nav-link btn-warning" data-toggle="modal" data-target="#formModal">Reserve Table</a> -->
+                     
+                    <a  role="button" class="btn btn-block nav-link btn-warning"
+                       id="reserve">
+                    <strong>Reserve Table</strong></a>
                 </div>
             </div>
         </div>
     </header>
+    
     <div id="formModal" class="modal fade" role="dialog">
         <div class="modal-dialog modal-lg" role="content">
             <div class="modal-content">
@@ -416,6 +428,15 @@
         });
 
         $(document).ready(function(){
+            $('#loginModal').click(function() {
+                if($('#carouselButton').children('span').hasClass('fa-pause')) {
+                    $('#mycarousel').carousel('pause');
+                    $('#carouselButton').children('span').removeClass('fa-pause');
+                    $('#carouselButton').children('span').addClass('fa-play');
+                }
+        });
+
+        $(document).ready(function(){
             $('#mycarousel').carousel({ interval: 2000 });
             $('#carouselButton').click(function() {
                 if($('#carouselButton').children('span').hasClass('fa-pause')) {
@@ -429,7 +450,18 @@
                     $('#carouselButton').children('span').addClass('fa-pause');
                 }            
             });
-        });    
+        });  
+    </script>
+    <script>
+        $("#login").click(function(){
+            $('#loginModal').modal('show');
+        });
+    </script>
+    
+    <script>
+        $("#reserve").click(function(){
+                $('#formModal').modal('show');
+        });
     </script>
 </body>
 
